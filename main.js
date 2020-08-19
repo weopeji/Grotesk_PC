@@ -1,7 +1,6 @@
 const {app, BrowserWindow, Menu} = require('electron');
 
 
-
 var preloaderWindow;
 var indexWindow;
 
@@ -32,8 +31,7 @@ function createWindow () {
                     nodeIntegration: true
                 },
                 show: false,
-                frame: false,
-                resizable: false,
+                frame: true,
                 simpleFullscreen: true,
             });
 
@@ -65,7 +63,5 @@ app.on('activate', () => {
 
 
 function getAllData(callback) {
-    setTimeout( function() {
-        callback();
-    }, 10);
+    callback();
 }
