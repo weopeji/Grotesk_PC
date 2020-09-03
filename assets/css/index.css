@@ -47,17 +47,17 @@ html, body {
 
 .menu_button {
     width: 100%;
-    height: 50px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 50px;
+    margin-top: 50px;
+    cursor: pointer;
 }
 
 .menu_button_in {
     display: flex;
     align-items: center;
-    cursor: pointer;
 }
 
 .menu_button svg {
@@ -83,4 +83,16 @@ html, body {
     width: 2px;
     height: 100%;
     background-color: rgba(0,0,0,0.08);
+}
+
+.menu_button.selected {
+    border-right: 2px solid white;
+    background-color: rgba(0,0,0,0.05);
+}
+
+
+
+.news_block {
+    width: 90%;
+    margin: 0 auto;
 }
