@@ -1,0 +1,81 @@
+.msg_block {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+}
+
+.msg_block_users {
+    flex: 1;
+    border-right: 1px solid #B6BAC0;
+}
+
+.msg_block_chat {
+    flex: 3;
+}
+
+.msg_block_users_header {
+    width: 100%;
+    height: 80px;
+    background-color: #3E444E;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+.user_img {
+    width: 47px;
+    height: 47px;
+    background-color: grey;
+    border-radius: 50%;
+    margin-left: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.user_img img {
+    width: 110%;
+}
+
+.user_name {
+    margin-left: 17px;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.add_user {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add_user span {
+    width: 30px;
+    height: 30px;
+    border: 1px solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.add_user span div {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 2;
+    font-size: 25px;
+    top: -2.5px;
+    position: relative;
+}

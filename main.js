@@ -1,5 +1,12 @@
 const {app, BrowserWindow, Menu} = require('electron');
 
+require('./assets/javascript/main');
+
+var user = getCookie('token')
+
+alert(typeof user);
+
+return;
 
 var preloaderWindow;
 var indexWindow;
@@ -18,6 +25,8 @@ function createWindow () {
         frame: false,
         resizable: false,
     });
+
+
     preloaderWindow.loadFile('preloader.html');
     
     preloaderWindow.once('ready-to-show', () => {
@@ -31,7 +40,7 @@ function createWindow () {
                     nodeIntegration: true
                 },
                 show: false,
-                frame: true,
+                frame: false,
                 simpleFullscreen: true,
             });
 
