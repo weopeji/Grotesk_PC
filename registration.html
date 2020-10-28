@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./assets/css/registration.css">
+</head>
+<body>
+    
+    <div class="index_body">
+
+        <div class="close_button">
+            <span>+</span>
+        </div>
+
+        <div class="index_body_default">
+
+            <div class="logo">
+                <span>G</span>
+            </div>
+    
+    
+            <div class="buttons">
+    
+                <div class="buttons_login_on">
+                    <span>Войти</span>
+                </div>
+                <p class="reg_on">Зарегестрироваться</p>
+    
+            </div>
+        </div>
+
+        <div class="index_body_registration">
+            <p>Имя</p>
+            <input type="text">
+            <p>Фамилия</p>
+            <input type="text">
+            <p>Телефон</p>
+            <input type="text" value="+7">
+
+            <div class="go_reg">
+                <span>Зарегестрироваться</span>
+            </div>
+        </div>
+
+        <div class="index_body_login">
+            <p>Телефон</p>
+            <input type="text" value="+7">
+
+            <div class="go_reg">
+                <span>Войти</span>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script>
+
+        const { ipcRenderer } = require('electron');
+
+        $('.close_button').click( function() {
+            ipcRenderer.send('close');
+        })
+
+        $('.reg_on').click( function() {
+            $('.index_body_default').fadeOut( function() {
+                $('.index_body_registration').fadeIn();
+            })
+        })
+
+        $('.buttons_login_on').click( function() {
+            $('.index_body_default').fadeOut( function() {
+                $('.index_body_login').fadeIn();
+            })
+        })
+        
+    </script>
+</body>
+</html>

@@ -9,9 +9,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "appdata-path": "^1.0.0",
     "electron": "^9.2.0",
+    "electron-json-storage": "^4.2.0",
     "http": "0.0.1-security",
     "jquery": "^3.5.1",
     "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "electron-builder": "^22.9.1",
+    "electron-nightly": "^12.0.0-nightly.20201026"
   }
 }

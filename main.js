@@ -1,15 +1,12 @@
-const {app, BrowserWindow, Menu} = require('electron');
-
-require('./assets/javascript/main');
-
-var user = getCookie('token')
-
-alert(typeof user);
-
-return;
+const {app, ipcMain, BrowserWindow, Menu} = require('electron');
+var getAppDataPath = require('appdata-path').getAppDataPath();
+const fs = require('fs');
+const storage = require('electron-json-storage');
 
 var preloaderWindow;
 var indexWindow;
+var registration;
+
 
 function createWindow () {
 
@@ -25,35 +22,60 @@ function createWindow () {
         frame: false,
         resizable: false,
     });
-
-
     preloaderWindow.loadFile('preloader.html');
-    
     preloaderWindow.once('ready-to-show', () => {
         preloaderWindow.show();
 
-        getAllData(function() {
-            
-            indexWindow = new BrowserWindow({
-                icon: __dirname + './assets/img/YPx1-WuF0Zk.jpg',
-                webPreferences: {
-                    nodeIntegration: true
-                },
-                show: false,
-                frame: false,
-                simpleFullscreen: true,
-            });
+        storage.get('user', function(err, data) {
+            if(data.length == undefined) {
+                registration = new BrowserWindow({
+                    icon: __dirname + './assets/img/YPx1-WuF0Zk.jpg',
+                    webPreferences: {
+                        nodeIntegration: true
+                    },
+                    show: false,
+                    maximizable: false,
+                    frame: false,
+                    resizable: false,
+                    width: 350,
+                    height: 500,
+                });
 
-            indexWindow.loadFile('index.html');
-            
-            indexWindow.once('ready-to-show', () => {
-                indexWindow.maximize();
-                indexWindow.show();
+                registration.loadFile('registration.html');
+
+                registration.once('ready-to-show', () => {
+                    preloaderWindow.close();
+                    registration.show();
+                })
+            } else {
                 preloaderWindow.close();
-            })
+                openDefaultWindow();
+            }
+        }); 
+        
+        
 
-        });
+
     })
+}
+
+function openDefaultWindow() {
+    indexWindow = new BrowserWindow({
+        icon: __dirname + './assets/img/YPx1-WuF0Zk.jpg',
+        webPreferences: {
+            nodeIntegration: true
+        },
+        show: false,
+        frame: false,
+        simpleFullscreen: true,
+    });
+
+    indexWindow.loadFile('index.html');
+    
+    indexWindow.once('ready-to-show', () => {
+        indexWindow.maximize();
+        indexWindow.show();
+    });
 }
   
 app.whenReady().then(createWindow);
@@ -70,7 +92,6 @@ app.on('activate', () => {
     }
 })
 
-
-function getAllData(callback) {
-    callback();
-}
+ipcMain.on('close', (event, arg) => {
+    app.quit()
+})
