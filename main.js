@@ -27,7 +27,7 @@ function createWindow () {
         preloaderWindow.show();
 
         storage.get('user', function(err, data) {
-            if(data.length == undefined) {
+            if(data.length == 0) {
                 registration = new BrowserWindow({
                     icon: __dirname + './assets/img/YPx1-WuF0Zk.jpg',
                     webPreferences: {
@@ -48,8 +48,8 @@ function createWindow () {
                     registration.show();
                 })
             } else {
-                preloaderWindow.close();
                 openDefaultWindow();
+                preloaderWindow.close();
             }
         }); 
         
@@ -94,4 +94,21 @@ app.on('activate', () => {
 
 ipcMain.on('close', (event, arg) => {
     app.quit()
+})
+
+ipcMain.on('add_user', (event, arg) => {
+    console.log(arg);
+    storage.set('user', { token: arg }, function(error) {
+        if (error) throw error;
+    })
+})
+
+ipcMain.on('auth_go', (event, arg) => {
+    openDefaultWindow();
+    registration.close();
+})
+
+storage.get('user', function(error, data) {
+    if (error) throw error;
+    console.log(data);
 })

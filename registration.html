@@ -33,51 +33,49 @@
         </div>
 
         <div class="index_body_registration">
-            <p>Имя</p>
-            <input type="text">
-            <p>Фамилия</p>
-            <input type="text">
-            <p>Телефон</p>
-            <input type="text" value="+7">
 
-            <div class="go_reg">
+            <div class="first_reg">
+                <p>Имя</p>
+                <input type="text" id='reg_name'>
+                <p>Фамилия</p>
+                <input type="text" id='reg_last_name'>
+                <p>Телефон</p>
+                <input type="text" value="+7" id='reg_phone'>
+            </div> 
+            <div class="second_reg">
+                <p>Пароль</p>
+                <input type="text" id='reg_password'> 
+                <p>Повторите пароль</p>
+                <input type="text" id='reg_password_again'> 
+            </div>
+
+            <div class="go_reg" id='go_reg'>
                 <span>Зарегестрироваться</span>
             </div>
         </div>
 
         <div class="index_body_login">
             <p>Телефон</p>
-            <input type="text" value="+7">
+            <input type="text" value="+7" id="auth_phone">
+            <p>Пароль</p>
+            <input type="password" id="auth_password">
 
-            <div class="go_reg">
+            <div class="go_reg" id='go_auth_now'>
                 <span>Войти</span>
             </div>
         </div>
 
 
+        <div class="preloader_reg">
+            <div class="preloader_reg_in">
+                <img src="./assets/img/22.gif" alt="">
+            </div>
+        </div>
+
     </div>
 
     <script>window.$ = window.jQuery = require('jquery');</script>
-    <script>
-
-        const { ipcRenderer } = require('electron');
-
-        $('.close_button').click( function() {
-            ipcRenderer.send('close');
-        })
-
-        $('.reg_on').click( function() {
-            $('.index_body_default').fadeOut( function() {
-                $('.index_body_registration').fadeIn();
-            })
-        })
-
-        $('.buttons_login_on').click( function() {
-            $('.index_body_default').fadeOut( function() {
-                $('.index_body_login').fadeIn();
-            })
-        })
-        
-    </script>
+    <script src="./assets/javascript/socket_io.js"></script>
+    <script src="./assets/javascript/registration.js"></script>
 </body>
 </html>
