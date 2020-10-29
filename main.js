@@ -2,10 +2,13 @@ const {app, ipcMain, BrowserWindow, Menu} = require('electron');
 var getAppDataPath = require('appdata-path').getAppDataPath();
 const fs = require('fs');
 const storage = require('electron-json-storage');
+const { strict } = require('assert');
 
 var preloaderWindow;
 var indexWindow;
 var registration;
+
+var addChatWindow;
 
 
 function createWindow () {
@@ -25,9 +28,9 @@ function createWindow () {
     preloaderWindow.loadFile('preloader.html');
     preloaderWindow.once('ready-to-show', () => {
         preloaderWindow.show();
-
+        
         storage.get('user', function(err, data) {
-            if(data.length == 0) {
+            if(!data.token) {
                 registration = new BrowserWindow({
                     icon: __dirname + './assets/img/YPx1-WuF0Zk.jpg',
                     webPreferences: {
@@ -76,6 +79,8 @@ function openDefaultWindow() {
         indexWindow.maximize();
         indexWindow.show();
     });
+
+    // indexWindow.webContents.openDevTools()
 }
   
 app.whenReady().then(createWindow);
@@ -96,6 +101,27 @@ ipcMain.on('close', (event, arg) => {
     app.quit()
 })
 
+ipcMain.on('add_chat', (event, arg) => {
+    addChatWindow = new BrowserWindow({
+        icon: __dirname + './assets/img/YPx1-WuF0Zk.jpg',
+        webPreferences: {
+            nodeIntegration: true
+        },
+        show: false,
+        maximizable: false,
+        frame: false,
+        resizable: false,
+        width: 350,
+        height: 500,
+    });
+
+    addChatWindow.loadFile('./add_chat/add_chat.html');
+
+    addChatWindow.once('ready-to-show', () => {
+        addChatWindow.show();
+    })
+})
+
 ipcMain.on('add_user', (event, arg) => {
     console.log(arg);
     storage.set('user', { token: arg }, function(error) {
@@ -108,7 +134,8 @@ ipcMain.on('auth_go', (event, arg) => {
     registration.close();
 })
 
-storage.get('user', function(error, data) {
-    if (error) throw error;
-    console.log(data);
+ipcMain.on('get_user', (event, arg) => {
+    storage.get('user', function(err, data) {
+        event.returnValue = data.token;
+    })
 })

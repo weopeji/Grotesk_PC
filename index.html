@@ -13,7 +13,20 @@
 
     <div class="index_page">
         <div class="index_page_header">
-
+            <div class="logotype_header">
+                <span>Grotesk</span>
+            </div>
+            <div class="user_settings_block">
+                <div class="settings_button">
+                    <img src="./assets/img/settings.svg" alt="">
+                </div>
+                <div class="user_block">
+                    
+                </div>
+                <div class="close_index_button">
+                    <span>+</span>
+                </div>
+            </div>
         </div>
 
         <div class="index_page_body">
@@ -22,31 +35,45 @@
 
                 <div class="body_msg_users">
 
-                    <div class="user_line">
-                        <div class="user_line_img">
-                            <img src="./assets/img/YPx1-WuF0Zk.jpg" alt="">
-                        </div>
-                        <div class="user_line_text">
-                            <h1>Кирилл Максимов</h1>
-                            <span>Hey! Alena come! 30min</span>
-                        </div>
-                    </div>
-
                 </div>
 
                 <div class="body_msg_add_button">
-                    <span></span>
+                    <div class="body_msg_add_button_toggle">
+
+                    </div>
+                    <div class="body_msg_add_button_in">
+                        <span></span>
+
+                        <div class="add_menu">
+                            <div class="add_menu_in">
+                                <input type="text">
+                                <div class="input_button">
+                                    <img src="./assets/img/telegram.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
             <div class="body_chat body_chat_block">
                 <div class="chat_info_block">
                     <div class="chat_info_block_in">
-                        <span>Кирилл Максимов</span>
+                        <span></span>
                     </div>
+                </div>
+
+                <div class="body_chat_msgs">
+
+                    
+
                 </div>
 
                 <div class="chat_input">
                     <input type="text">
+                    <div class="input_button add_msg_input">
+                        <img src="./assets/img/telegram.svg" alt="">
+                    </div>
                 </div>
             </div>
             <div class="body_info body_chat_block">
@@ -56,7 +83,7 @@
                     </span>
                 </div>
                 <div class="info_block_header_text">
-                    <h1>Кирилл Максимов</h1>
+                    <h1>Служба Поддержки</h1>
                     <span>online</span>
                 </div>
             </div>
@@ -67,9 +94,9 @@
     </div>
 
 
-
-
     <script>window.$ = window.jQuery = require('jquery');</script>
+    <script src="./assets/javascript/socket_io.js"></script>
+    <script src="./assets/javascript/main.js"></script>
     <script src="./assets/javascript/messenger/index.js"></script>
 </body>
 </html>
