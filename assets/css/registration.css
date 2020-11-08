@@ -6,7 +6,11 @@ html, body {
     color: white;
 }
 
-input {outline:none;}
+input 
+{
+    outline:none;
+    color: var(--main-color-mini-grey);
+}
 
 .index_body {
     width: 100vw;

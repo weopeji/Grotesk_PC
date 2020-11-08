@@ -1,9 +1,12 @@
 var global_use = new Array();
-console.log(global_use);
 
 const global_data = {
     data_url_localhost: 'http://localhost:3000'
+    //data_url_localhost: 'http://192.168.0.13:3000'
 }
+
+var data_img = "http://localhost/server/users/";
+//data_img = "http://192.168.0.13/users/";
 
 
 //========= Cookies ===================================================================
@@ -106,9 +109,32 @@ function checkToken(callback) {
     }
 }
 
-
-
-
+function alertText(data) {
+    var templateText = function() {/*
+        <div class="alert_text">
+            <div class="alert_text_in">
+                <span>%text%</span>
+            </div>
+        </div>
+    */}.toString().slice(15, -3);
+    templateText = templateText.replace(new RegExp("%text%", 'g'), data);
+    $("body").append(templateText);
+    var heightBlock = $('.alert_text').height();
+    $('.alert_text').css({
+        "display": "block",
+        "top": "-" + heightBlock,
+    }).animate({
+        "top": '20px',
+    }, 1000, function() {
+        setTimeout( function() {
+            $('.alert_text').animate({
+                "top": "-" + heightBlock,
+            }, 1000, function() {
+                $(this).remove();
+            });
+        }, 2000)
+    });
+}
 
 
 

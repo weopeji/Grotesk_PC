@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
+    <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/messenger.css">
 </head>
 <body>
@@ -14,7 +15,7 @@
     <div class="index_page">
         <div class="index_page_header">
             <div class="logotype_header">
-                <span>Grotesk</span>
+                <span>Grotesk messenger</span>
             </div>
             <div class="user_settings_block">
                 <div class="settings_button">
@@ -43,20 +44,24 @@
                     </div>
                     <div class="body_msg_add_button_in">
                         <span></span>
-
-                        <div class="add_menu">
-                            <div class="add_menu_in">
-                                <input type="text">
-                                <div class="input_button">
-                                    <img src="./assets/img/telegram.svg" alt="">
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
             </div>
             <div class="body_chat body_chat_block">
+
+                <div class="add_box">
+                    <div class="add_box_header">
+                        <input id="add_user" type="text" placeholder="Поиск пользователей, Имя или Номер">
+                        <div class="add_box_header_go">
+                            <img src="./assets/img/telegram.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="add_box_body">
+                        
+                    </div>
+                </div>
+
                 <div class="chat_info_block">
                     <div class="chat_info_block_in">
                         <span></span>
@@ -64,13 +69,19 @@
                 </div>
 
                 <div class="body_chat_msgs">
-
-                    
-
+                    <div class="body_chat_msgs_in">
+                        
+                    </div>
                 </div>
 
                 <div class="chat_input">
-                    <input type="text">
+                    <div class="input_button add_img_input">
+                        <form>
+                            <input type="file" name="imgs" id="input_img" accept=".png, .jpg, .jpeg">
+                        </form>
+                        <img src="./assets/img/add_img.png" alt="">
+                    </div>
+                    <input type="text" id='header_input'>
                     <div class="input_button add_msg_input">
                         <img src="./assets/img/telegram.svg" alt="">
                     </div>
@@ -79,7 +90,7 @@
             <div class="body_info body_chat_block">
                 <div class="info_block_img">
                     <span>
-                        <img src="./assets/img/YPx1-WuF0Zk.jpg" alt="">
+                        <img src="./assets/img/default_user.png" alt="">
                     </span>
                 </div>
                 <div class="info_block_header_text">

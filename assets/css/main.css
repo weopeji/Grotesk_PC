@@ -1,0 +1,30 @@
+:root {
+    --main-body-color:#27292D;
+    --main-line-color: #2F3134;
+    --main-blue: #0086FF;
+    --font-default: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --main-color-text: #F4F4F4;
+    --main-color-text-grey: #8B8C8E;
+    --main-color-mini-grey: #CDDBEC;
+    --input-bkg: #2F3236;
+}
+
+input {outline:none;}
+
+.alert_text {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: -100%;
+    left: 0;
+    text-align: center;
+    z-index: 9999999999999999999;
+}
+
+.alert_text_in {
+    width: calc(90% - 40px);
+    padding: 20px;
+    margin: 0 auto;
+    border-radius: 8px;
+    background-color: var(--input-bkg);
+}
